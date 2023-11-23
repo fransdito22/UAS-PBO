@@ -2,11 +2,12 @@ package View;
 
 import java.util.Scanner;
 
-public class mainMenu {
+public class MainMenu {
     public void pilihanMenu(){
         int pilihan;
         boolean exit = false;
-        menuBuku opsiBuku = new menuBuku();
+        MenuBuku menuBuku = new MenuBuku();
+        MenuPeminjaman menuPeminjaman = new MenuPeminjaman();
         Scanner scan = new Scanner(System.in);
 
         displayMenu();//menampilkan pilihan mainMenu.menu
@@ -14,10 +15,10 @@ public class mainMenu {
         while (!exit){
             switch (pilihan){
                 case 1 :
-                    System.out.println("peminjaman");
+                    menuPeminjaman.pilihanMenu();
                     break;
                 case 2 :
-                    opsiBuku.pilihanMenu();
+                    menuBuku.pilihanMenu();
                     break;
                 case 3 :
                     System.out.println("Terima kasih");
@@ -33,9 +34,9 @@ public class mainMenu {
         System.out.println("============================================");
         System.out.println("     PROGRAM PENGELOLAAN PERPUSTAKAAN       ");
         System.out.println("--------------------------------------------");
-        System.out.println("Pilihan menu : \n1.Peminjaman \n2.Data buku \n3.Data member");
+        System.out.println("Pilihan menu : \n1.Peminjaman \n2.Data buku \n3.Exit");
         System.out.println("============================================");
-        System.out.print("Masukkan pilihan [1,2,3,4] : ");
+        System.out.print("Masukkan pilihan [1,2,3] : ");
     }
 }
 

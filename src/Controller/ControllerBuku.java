@@ -1,6 +1,6 @@
 package Controller;
 
-import model.ModelBuku;
+import Model.ModelBuku;
 
 public class ControllerBuku {
     ModelBuku modelBuku = new ModelBuku();

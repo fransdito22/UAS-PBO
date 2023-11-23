@@ -1,11 +1,11 @@
 package View;
 import Controller.ControllerBuku;
-import model.ModelBuku;
+import View.MainMenu;
 
-import java.util.Objects;
+
 import java.util.Scanner;
 
-public class menuBuku {
+public class MenuBuku {
         Scanner scan = new Scanner(System.in);
 
     public void pilihanMenu(){
@@ -13,6 +13,7 @@ public class menuBuku {
         boolean exit = false;
 
         ControllerBuku controllerBuku = new ControllerBuku();
+        MainMenu mainMenu = new MainMenu();
 
             displayMenu();//menampilkan pilihan mainMenu.menu
             System.out.print("Masukkan pilihan [1,2,3,4,5] : ");
@@ -33,8 +34,7 @@ public class menuBuku {
                    hapusBuku(controllerBuku);
                    break;
                 case 5 :
-                    System.out.println("Terima kasih");
-                    exit = true;
+                    mainMenu.pilihanMenu();
                     break;
                 default:
                     System.out.println("Pilihan Anda salah");
@@ -46,6 +46,8 @@ public class menuBuku {
     public void displayMenu(){
         System.out.println("Masukkan pilihan: \n1.Tambah buku\n2.Tampilkan buku\n3.Tambah stok\n4.Hapus buku\n5.Exit");
     }
+
+//    fungsi-fungsi yang dipanggil di dalam switch case
 public void tambahBuku(ControllerBuku controllerBuku){
 
     String judul,pengarang,option;
@@ -81,27 +83,44 @@ public void tampilkanBuku(ControllerBuku controllerBuku){
     System.out.print("Kembali [y/n] : ");
     option = scan.next();
     if (option.equalsIgnoreCase("y")) {
-        tambahBuku(controllerBuku);
-    } else {
         pilihanMenu();
+    } else {
+        tampilkanBuku(controllerBuku);
     }
 }
 public void updateBuku(ControllerBuku controllerBuku) {
-    String nama;
+    String nama,option;
     int jumlah;
-    System.out.println("Judul buku  : ");
+    System.out.print("Judul buku  : ");
+    scan.nextLine();
     nama = scan.nextLine();
     System.out.print("jumlah buku : ");
     jumlah = scan.nextInt();
 
     controllerBuku.updateDataBuku(nama,jumlah);
+    //    opsi kembali
+    System.out.print("Kembali [y/n] : ");
+    option = scan.next();
+    if (option.equalsIgnoreCase("y")) {
+        pilihanMenu();
+    } else {
+        updateBuku(controllerBuku);
+    }
 }
 public void hapusBuku(ControllerBuku controllerBuku){
-    String judul;
+    String judul,option;
     System.out.print("Judul buku yang ingin di hapus : ");
     judul = scan.next();
     controllerBuku.hapusDataBuku(judul);
     System.out.println("Buku berhasil dihapus");
+    //    opsi kembali
+    System.out.print("Kembali [y/n] : ");
+    option = scan.next();
+    if (option.equalsIgnoreCase("y")) {
+        pilihanMenu();
+    } else {
+        hapusBuku(controllerBuku);
+    }
 }
 
 }

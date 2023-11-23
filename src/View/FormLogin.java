@@ -13,7 +13,7 @@ public class FormLogin {
     }
     public void verifikasiLogin(){
         Scanner scan = new Scanner(System.in);
-        mainMenu mainMenu = new mainMenu();//inisialisasi objek mainMenu.menu
+        MainMenu mainMenu = new MainMenu();//inisialisasi objek mainMenu.menu
         String nama;
         String pass;
         System.out.println("FORM LOGIN\n-------------");

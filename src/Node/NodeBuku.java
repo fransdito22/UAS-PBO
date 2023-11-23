@@ -30,4 +30,16 @@ public class NodeBuku {
     public String getJudul_buku() {
         return judul_buku;
     }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public void decreaseStok(int jumlahBuku) {
+        if (jumlahBuku > 0 && stok >= jumlahBuku) {
+            stok -= jumlahBuku;
+        } else {
+            System.out.println("Stok buku kosong");
+        }
+    }
 }
