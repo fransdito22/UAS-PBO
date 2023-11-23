@@ -46,8 +46,8 @@ public class menuBuku {
     public void displayMenu(){
         System.out.println("Masukkan pilihan: \n1.Tambah buku\n2.Tampilkan buku\n3.Tambah stok\n4.Hapus buku\n5.Exit");
     }
-
 public void tambahBuku(ControllerBuku controllerBuku){
+
     String judul,pengarang,option;
     int tahun;
 
@@ -65,7 +65,7 @@ public void tambahBuku(ControllerBuku controllerBuku){
     System.out.print("Tambah buku lagi[y/n] :");
     option = scan.next();
 
-    if ((Objects.equals(option, "y") || Objects.equals(option, "Y"))) {
+    if (option.equalsIgnoreCase("y")) {
         tambahBuku(controllerBuku);
     } else {
         pilihanMenu();
@@ -80,10 +80,10 @@ public void tampilkanBuku(ControllerBuku controllerBuku){
 //    opsi kembali
     System.out.print("Kembali [y/n] : ");
     option = scan.next();
-    if (Objects.equals(option, "y")||Objects.equals(option,"Y")){
-        pilihanMenu();
+    if (option.equalsIgnoreCase("y")) {
+        tambahBuku(controllerBuku);
     } else {
-        tampilkanBuku(controllerBuku);
+        pilihanMenu();
     }
 }
 public void updateBuku(ControllerBuku controllerBuku) {
