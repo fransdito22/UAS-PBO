@@ -1,8 +1,9 @@
 package View;
 import Controller.ControllerBuku;
-import View.MainMenu;
+import org.jetbrains.annotations.NotNull;
 
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MenuBuku {
@@ -10,7 +11,6 @@ public class MenuBuku {
 
     public void pilihanMenu(){
         int pilihan;
-        boolean exit = false;
 
         ControllerBuku controllerBuku = new ControllerBuku();
         MainMenu mainMenu = new MainMenu();
@@ -18,8 +18,6 @@ public class MenuBuku {
             displayMenu();//menampilkan pilihan mainMenu.menu
             System.out.print("Masukkan pilihan [1,2,3,4,5] : ");
             pilihan = scan.nextInt();
-        while (!exit){
-
             switch (pilihan){
                 case 1 :
                     tambahBuku(controllerBuku);
@@ -41,18 +39,18 @@ public class MenuBuku {
                     pilihanMenu();//jika pilihan salah kembali memasukkan pilihan
             }
         }
-    }
 
     public void displayMenu(){
         System.out.println("Masukkan pilihan: \n1.Tambah buku\n2.Tampilkan buku\n3.Tambah stok\n4.Hapus buku\n5.Exit");
     }
 
 //    fungsi-fungsi yang dipanggil di dalam switch case
-public void tambahBuku(ControllerBuku controllerBuku){
+public void tambahBuku(@NotNull ControllerBuku controllerBuku){
 
     String judul,pengarang,option;
     int tahun;
 
+    do {
     System.out.print("Masukkan judul buku     : ");
     scan.nextLine();
     judul = scan.nextLine();
@@ -60,37 +58,31 @@ public void tambahBuku(ControllerBuku controllerBuku){
     pengarang = scan.nextLine();
     System.out.print("Masukkan tahun terbit   : ");
     tahun = scan.nextInt();
-//    ControllerBuku controllerBuku = new ControllerBuku();
+
     controllerBuku.isiDataBuku(judul, pengarang, tahun);
-//    buku.insertBook(judul,pengarang,tahun);
+
 //    opsi kembali
     System.out.print("Tambah buku lagi[y/n] :");
     option = scan.next();
+    }while (Objects.equals(option, "y") || Objects.equals(option, "Y"));
 
-    if (option.equalsIgnoreCase("y")) {
-        tambahBuku(controllerBuku);
-    } else {
-        pilihanMenu();
-    }
+
 }
-public void tampilkanBuku(ControllerBuku controllerBuku){
+public void tampilkanBuku(@NotNull ControllerBuku controllerBuku){
     String option;
+
+    do {
     controllerBuku.tamplikanDataBuku();
-
-    //    ControllerBuku controllerBuku = new ControllerBuku();
-
 //    opsi kembali
     System.out.print("Kembali [y/n] : ");
     option = scan.next();
-    if (option.equalsIgnoreCase("y")) {
-        pilihanMenu();
-    } else {
-        tampilkanBuku(controllerBuku);
-    }
+    }while (Objects.equals(option, "y") || Objects.equals(option, "Y"));
+
 }
-public void updateBuku(ControllerBuku controllerBuku) {
+public void updateBuku(@NotNull ControllerBuku controllerBuku) {
     String nama,option;
     int jumlah;
+    do {
     System.out.print("Judul buku  : ");
     scan.nextLine();
     nama = scan.nextLine();
@@ -101,14 +93,11 @@ public void updateBuku(ControllerBuku controllerBuku) {
     //    opsi kembali
     System.out.print("Kembali [y/n] : ");
     option = scan.next();
-    if (option.equalsIgnoreCase("y")) {
-        pilihanMenu();
-    } else {
-        updateBuku(controllerBuku);
-    }
+    }while (Objects.equals(option, "y") || Objects.equals(option, "Y"));
 }
-public void hapusBuku(ControllerBuku controllerBuku){
+public void hapusBuku(@org.jetbrains.annotations.NotNull ControllerBuku controllerBuku){
     String judul,option;
+    do {
     System.out.print("Judul buku yang ingin di hapus : ");
     judul = scan.next();
     controllerBuku.hapusDataBuku(judul);
@@ -116,11 +105,7 @@ public void hapusBuku(ControllerBuku controllerBuku){
     //    opsi kembali
     System.out.print("Kembali [y/n] : ");
     option = scan.next();
-    if (option.equalsIgnoreCase("y")) {
-        pilihanMenu();
-    } else {
-        hapusBuku(controllerBuku);
-    }
+    }while (Objects.equals(option, "y") || Objects.equals(option, "Y"));
 }
 
 }

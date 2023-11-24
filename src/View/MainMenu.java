@@ -31,9 +31,6 @@ public class MainMenu {
         }
     }
     public  void displayMenu(){
-        System.out.println("============================================");
-        System.out.println("     PROGRAM PENGELOLAAN PERPUSTAKAAN       ");
-        System.out.println("--------------------------------------------");
         System.out.println("Pilihan menu : \n1.Peminjaman \n2.Data buku \n3.Exit");
         System.out.println("============================================");
         System.out.print("Masukkan pilihan [1,2,3] : ");
