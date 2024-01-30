@@ -1,45 +1,38 @@
 package Node;
 
 public class NodeBuku {
-    int kode_buku;
-    String judul_buku;
-    String pengarang;
-    int tahun_terbit;
-    int stok;
+    private int tahunTerbit, stok;
+    private String kodeBuku, judulBuku, pengarang;
 
-    public NodeBuku(int kode_buku, String judul_buku, String pengarang, int tahun_terbit) {
-        this.kode_buku = kode_buku;
-        this.judul_buku = judul_buku;
+    public NodeBuku(String kodeBuku, String judulBuku, String pengarang, int tahunTerbit, int stok) {
+        this.kodeBuku = kodeBuku;
+        this.judulBuku = judulBuku;
         this.pengarang = pengarang;
-        this.tahun_terbit = tahun_terbit;
-        this.stok = 0;
+        this.tahunTerbit = tahunTerbit;
+        this.stok = stok;
     }
 
-    public void viewBuku() {
-        System.out.println("kode buku : " + kode_buku);
-        System.out.println("judul buku : " + judul_buku);
-        System.out.println("pengarang buku : " + pengarang);
-        System.out.println("tahun terbit buku : " + tahun_terbit);
-        System.out.println("stok buku : " + stok);
+    public String getJudulBuku() {
+        return judulBuku;
     }
 
-    public void updateStok(int newStok) {
-        this.stok = this.stok + newStok;
-    }
-
-    public String getJudul_buku() {
-        return judul_buku;
+    public int getTahunTerbit() {
+        return tahunTerbit;
     }
 
     public int getStok() {
         return stok;
     }
 
-    public void decreaseStok(int jumlahBuku) {
-        if (jumlahBuku > 0 && stok >= jumlahBuku) {
-            stok -= jumlahBuku;
-        } else {
-            System.out.println("Stok buku kosong");
-        }
+    public String getKodeBuku() {
+        return kodeBuku;
+    }
+
+    public String getPengarang() {
+        return pengarang;
+    }
+
+    public void setStok(int stok) {
+        this.stok = stok;
     }
 }
